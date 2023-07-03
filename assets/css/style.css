@@ -1,0 +1,63 @@
+/*......HEADER........*/
+.foto {
+  width: 300px;
+}
+.foto img {
+  max-width: 100%;
+  display: block;
+}
+
+#ord {
+  width: 100%;
+}
+
+.presentation {
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.botonesnav {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+/*..........MAIN...........*/
+
+.aboutme {
+  padding-top: 14em;
+}
+
+
+.aboutme h1 {
+  text-align: center;
+}
+
+.aboutme p {
+  padding-top: 5rem;
+}
+
+h2 {
+  text-align: center;
+  padding: 5rem 0 5rem 0;
+}
+
+
+.hobbies{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.hobbies img{
+  max-width: 100%;
+  display: block;
+}
+
+.foot{
+    text-align: center;
+    padding: 1rem 0 2rem 0;
+}
+
