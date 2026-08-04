@@ -1,0 +1,90 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+  <div class="footer__sun">
+    <iframe
+      src="https://my.spline.design/astarlikeourown-rZsIOs3yczfoDJTfbnPuXxtG/"
+      frameborder="0"
+      loading="lazy"
+      title="Yellow Dwarf star"
+      class="footer__iframe"
+    ></iframe>
+  </div>
+
+  <div class="footer__bottom">
+    <span class="footer__copy">© {year} None</span>
+    <span class="footer__attr">
+      Disk: <a href="https://codepen.io/dyook/pen/NPbLrxj" target="_blank" rel="noopener">dyook</a>
+      / <a href="https://codepen.io/VoXelo/pen/VYKMNwE" target="_blank" rel="noopener">VoXelo</a>
+      — MIT
+    </span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+  }
+
+  .footer__sun {
+    width: 100%;
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__sun::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, #09090e, transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .footer__iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .footer__bottom {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    max-width: var(--container);
+    margin: 0 auto;
+    pointer-events: none;
+  }
+
+  .footer__copy,
+  .footer__attr {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.35);
+    pointer-events: auto;
+  }
+
+  .footer__attr a {
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .footer__attr a:hover { color: rgba(255, 255, 255, 0.65); }
+
+  @media (max-width: 640px) {
+    .footer__bottom { flex-direction: column; gap: 0.35rem; bottom: 1.25rem; }
+  }
+</style>

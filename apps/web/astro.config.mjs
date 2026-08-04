@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import vercel from '@astrojs/vercel'
 
 export default defineConfig({
+  server: { host: '0.0.0.0' },
   output: 'server',
   adapter: vercel(),
   site: 'https://nonedev-web.vercel.app',

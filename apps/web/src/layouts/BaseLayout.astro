@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '@/i18n'
 import { useTranslations, getLocalePath, getAlternateLocale } from '@/i18n'
+import Footer from '@/components/shared/Footer.astro'
 
 interface Props {
   locale: Locale
@@ -29,9 +30,43 @@ const altHref = `${Astro.site}${getLocalePath(altLocale, cleanPath)}`
     <title>{title}</title>
   </head>
   <body>
+    <canvas id="stars-bg" aria-hidden="true"></canvas>
     <slot />
+    <Footer />
   </body>
 </html>
+
+<script is:inline>
+  (function () {
+    const canvas = document.getElementById('stars-bg')
+    const ctx = canvas.getContext('2d')
+
+    function draw() {
+      const W = window.innerWidth
+      const H = window.innerHeight
+      canvas.width  = W
+      canvas.height = H
+
+      ctx.fillStyle = '#09090e'
+      ctx.fillRect(0, 0, W, H)
+
+      const count = Math.floor((W * H) / 6000)
+      for (let i = 0; i < count; i++) {
+        const x = Math.random() * W
+        const y = Math.random() * H
+        const r = Math.random() * 1.2 + 0.3
+        const a = Math.random() * 0.45 + 0.08
+        ctx.beginPath()
+        ctx.arc(x, y, r, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255,255,255,${a})`
+        ctx.fill()
+      }
+    }
+
+    draw()
+    window.addEventListener('resize', draw)
+  })()
+</script>
 
 <style is:global>
   /* ── Tokens ─────────────────────────────────────────────────────────────── */
@@ -81,8 +116,18 @@ const altHref = `${Astro.site}${getLocalePath(altLocale, cleanPath)}`
 
   html { scroll-behavior: smooth; }
 
+  #stars-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;
+    pointer-events: none;
+  }
+
   body {
-    background-color: var(--color-bg);
+    background-color: transparent;
     color: var(--color-text);
     font-family: var(--font-sans);
     line-height: 1.6;

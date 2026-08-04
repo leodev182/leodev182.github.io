@@ -91,6 +91,18 @@ const t = useTranslations(locale)
     overflow: hidden;
   }
 
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(to bottom, transparent, #09090e);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .hero__canvas {
     position: absolute;
     inset: 0;

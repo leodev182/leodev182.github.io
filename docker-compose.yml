@@ -50,14 +50,14 @@ services:
     restart: unless-stopped
     ports:
       - '4321:4321'
+    env_file:
+      - apps/web/.env
     volumes:
       - .:/app
       - /app/node_modules
       - /app/apps/web/node_modules
       - /app/packages/contracts/node_modules
       - /app/packages/logger/node_modules
-    environment:
-      - API_URL=http://api:3000
     depends_on:
       - api
 
