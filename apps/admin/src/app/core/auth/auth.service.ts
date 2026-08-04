@@ -16,7 +16,18 @@ export class AuthService {
   private readonly http = inject(HttpClient)
   private readonly router = inject(Router)
 
-  readonly isAuthenticated = signal(!!localStorage.getItem(TOKEN_KEY))
+  readonly isAuthenticated = signal(this.hasValidToken())
+
+  private hasValidToken(): boolean {
+    const token = localStorage.getItem(TOKEN_KEY)
+    if (!token) return false
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]!))
+      return Date.now() < payload.exp * 1000
+    } catch {
+      return false
+    }
+  }
 
   get token(): string | null {
     return localStorage.getItem(TOKEN_KEY)
